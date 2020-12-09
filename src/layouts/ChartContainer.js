@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { netWorthOverTime } from '../util/netWorth'
+import {
+  TRANSACTION_HIST_URL,
+  BTC_RATES_URL,
+  ETH_RATES_URL,
+} from '../constants/API_URLs'
 import Chart from '../components/Chart'
 import Spinner from '../components/UI/Spinner'
 import Alert from '../components/UI/Alert'
@@ -13,22 +18,26 @@ const ChartContainer = () => {
 
   useEffect(() => {
     axios
-      .get(
-        'https://shakepay.github.io/programming-exercise/web/transaction_history.json'
+      .all([
+        axios.get(TRANSACTION_HIST_URL),
+        axios.get(BTC_RATES_URL),
+        axios.get(ETH_RATES_URL),
+      ])
+      .then(
+        axios.spread((...responses) => {
+          const transactions = responses[0].data
+          const rates = {
+            CAD_BTC: responses[1].data,
+            CAD_ETH: responses[2].data,
+          }
+          setNetWorthHistory(netWorthOverTime(transactions, rates))
+          setLoading(false)
+        })
       )
-      .then((res) => {
-        setNetWorthHistory(netWorthOverTime(res.data)).then((res) =>
-          console.log(res)
-        )
+      .catch((errors) => {
         setLoading(false)
-        setError({ presence: false, message: '' })
-        console.log(netWorthHistory)
-      })
-      .catch((err) => {
-        setLoading(false)
-        if (err.message) {
-          setError({ presence: true, message: err.message })
-        }
+
+        setError({ presence: true, message: errors.message })
       })
   }, [])
 
@@ -36,6 +45,7 @@ const ChartContainer = () => {
     <div className={classes.ChartContainer}>
       {loading && <Spinner />}
       {error.presence ? <Alert type='danger' message={error.message} /> : null}
+      <Chart data={netWorthHistory} />
     </div>
   )
 }

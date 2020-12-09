@@ -1,4 +1,2 @@
-const BTC_CAD_RATE = 23600.79
-const ETH_CAD_RATE = 733.28
-
-export { BTC_CAD_RATE, ETH_CAD_RATE }
+export const BTC_CAD_RATE = 23600.79
+export const ETH_CAD_RATE = 733.28
