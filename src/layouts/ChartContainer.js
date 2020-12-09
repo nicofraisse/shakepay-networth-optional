@@ -17,9 +17,12 @@ const ChartContainer = () => {
         'https://shakepay.github.io/programming-exercise/web/transaction_history.json'
       )
       .then((res) => {
-        setNetWorthHistory(netWorthOverTime(res.data))
+        setNetWorthHistory(netWorthOverTime(res.data)).then((res) =>
+          console.log(res)
+        )
         setLoading(false)
         setError({ presence: false, message: '' })
+        console.log(netWorthHistory)
       })
       .catch((err) => {
         setLoading(false)
@@ -32,11 +35,7 @@ const ChartContainer = () => {
   return (
     <div className={classes.ChartContainer}>
       {loading && <Spinner />}
-      {error.presence ? (
-        <Alert type='danger' message={error.message} />
-      ) : (
-        <Chart data={netWorthHistory} />
-      )}
+      {error.presence ? <Alert type='danger' message={error.message} /> : null}
     </div>
   )
 }
