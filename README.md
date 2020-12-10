@@ -21,9 +21,8 @@
 
 ## Libraries & ressources used
 - Javascript framework used: React.js
-- CSS framework used: Bootstrap
+- CSS framework used: Bootstrap for diverse UI components such as alerts/spinner. 
 - Chart library used: chart.js
 - axios for API calls
-- Bootstrap for diverse UI components such as alerts/spinner. 
 - CSS modules for ensuring each class name is scoped to its own component
 - Hosted with Firebase
