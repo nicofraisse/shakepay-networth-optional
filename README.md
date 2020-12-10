@@ -1,4 +1,4 @@
-# Shakepay challenge
+# Shakepay challenge (with optional part)
 
 ## Live demo 👉 https://shakepay-challenge-v2.web.app
 
@@ -10,7 +10,7 @@
 ## Possible improvements
 
 - Add UI features in the chart to zoom in, show months etc.
-- Improve formatting in the tooltips when we hovoer over transactions 
+- Improve formatting in the tooltips when we hovoer over transactions
 
 ## Features
 - Chart is here and displays net worh over time
