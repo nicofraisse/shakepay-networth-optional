@@ -10,7 +10,7 @@
 ## Possible improvements
 
 - Add UI features in the chart to zoom in, show months etc.
-- Improve formatting in the tooltips when we hovoer over transactions
+- Improve formatting in the tooltips when we hover over transactions
 
 ## Features
 - Chart is here and displays net worh over time
@@ -21,8 +21,8 @@
 
 ## Libraries & ressources used
 - Javascript framework used: React.js
-- CSS framework used: Bootstrap for diverse UI components such as alerts/spinner. 
-- Chart library used: chart.js
-- axios for API calls
+- CSS library used: Bootstrap for diverse UI components such as alerts/spinner. 
+- Chart plugin used: chart.js
+- Axios for API calls
 - CSS modules for ensuring each class name is scoped to its own component
 - Hosted with Firebase
